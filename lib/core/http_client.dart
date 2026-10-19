@@ -67,8 +67,13 @@ class ApiClient {
         throw ConflictFailure(message ?? 'Conflicto con el estado del recurso');
       case 422:
         throw ValidationFailure(_validationFields(detail));
+      case >= 500 && <= 599:
+        throw ServerFailure(code);
       default:
-        throw const NetworkFailure();
+        throw UnexpectedFailure(
+          code,
+          message ?? 'Respuesta inesperada del servidor ($code)',
+        );
     }
   }
 
