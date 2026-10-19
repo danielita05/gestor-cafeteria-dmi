@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "gestor_cafeteria (Chrome sin CORS)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "-d",
+        "chrome",
+        "--web-browser-flag",
+        "--disable-web-security"
+      ]
+    },
+    {
+      "name": "gestor_cafeteria",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}
