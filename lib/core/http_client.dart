@@ -6,8 +6,8 @@ import 'package:gestor_cafeteria/core/failure.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  final http.Client? _client;
-  final Uri? baseUrl;
+  final http.Client _client;
+  final Uri baseUrl;
   final Duration timeout;
   //Clase Client
   ApiClient({
@@ -31,7 +31,7 @@ class ApiClient {
 
   Future<dynamic> _send(String method, String path, [Object? body]) async {
     //Request: Va arma la peticion con la inyeccion de los HEADERS
-    final request = http.Request(method, baseUrl!.resolve(path))
+    final request = http.Request(method, baseUrl.resolve(path))
       ..headers['Accept'] = 'application/json';
     //Si es una peticion que tiene que mandar un body
     if (body != null) {
@@ -42,7 +42,7 @@ class ApiClient {
     final http.Response response;
     //El response se va a tratar segun el caso con el servicio respondio
     try {
-      response = await _client!
+      response = await _client
           .send(request)
           .then(http.Response.fromStream)
           .timeout(timeout);
