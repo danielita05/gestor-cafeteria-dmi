@@ -25,8 +25,6 @@ class ApiClient {
   Future<dynamic> get(String path) => _send('GET', path);
   Future<dynamic> post(String path, Object body) => _send('POST', path, body);
   Future<dynamic> patch(String path, Object body) => _send('PATCH', path, body);
-  Future<dynamic> update(String path, Object body) =>
-      _send('UPDATE', path, body);
   Future<void> delete(String path) => _send('DELETE', path);
 
   //Funcion SEND -> Mandar la peticion al Servicio, esperar una respuesta y adecuarlo para flutter
